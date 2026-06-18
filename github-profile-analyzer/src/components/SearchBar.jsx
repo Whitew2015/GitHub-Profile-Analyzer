@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBar({ onSearch }) {
 
     const [username, setUsername] = useState("");
 
@@ -8,12 +8,13 @@ export default function SearchBar() {
         <div>
             <input 
                 type="text"
-                placeholder="Enter Github username"
+                placeholder="Github username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 />
+                <button onClick={() => onSearch(username)}>Search</button>
 
-                <button>Search</button>
+                {/*Testing for username appearing on-screen*/}
                 <p>Searching for: {username}</p>
         </div>
     );
