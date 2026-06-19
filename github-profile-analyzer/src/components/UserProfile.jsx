@@ -11,7 +11,6 @@ export default function UserProfile({ user }) {
 
             <h2>{user.name}</h2>
             <p>{user.bio}</p>
-            <p>Followers: {user.followers}</p>
             <p>Repositories: {user.public_repos}</p>
         </div>
     )
