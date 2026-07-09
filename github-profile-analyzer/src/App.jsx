@@ -4,6 +4,7 @@ import SearchBar from './components/SearchBar';
 import UserProfile from './components/UserProfile';
 import { getRepos, getUser } from './services/githubApi';
 import RepoList from './components/RepoList';
+import LoadingSpinner from './components/LoadingSpinner';
 
 
 function App() {
@@ -24,14 +25,17 @@ function App() {
       setLoading(true);
       setError("");
 
-      const data = await getUser(username);
-      setUser(data);
+      setUser(null);
+      setRepos([]);
 
+      const data = await getUser(username);
       const repoData = await getRepos(username);
+      
+      setUser(data);
       setRepos(repoData);
+
     // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      setUser(null);
       setError("User not found");
     } finally {
       setLoading(false);
@@ -43,7 +47,7 @@ function App() {
       <h1>GitHub Profile Analyzer</h1>
       <SearchBar onSearch={handleSearch} />
 
-      {loading && <p>Loading...</p>}
+      {loading && <LoadingSpinner />}
       {error && <p>{error}</p>}
 
       <UserProfile user={user} />
