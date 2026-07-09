@@ -17,6 +17,7 @@ function App() {
 
     if (!username.trim()) {
       setUser(null);
+      setRepos([]);
       setError("Please enter a Github username");
       return;
     }
@@ -30,7 +31,7 @@ function App() {
 
       const data = await getUser(username);
       const repoData = await getRepos(username);
-      
+
       setUser(data);
       setRepos(repoData);
 
