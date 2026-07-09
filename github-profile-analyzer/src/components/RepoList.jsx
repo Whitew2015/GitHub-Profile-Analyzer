@@ -1,12 +1,27 @@
-export default function RepoList({ repo }) {
-    if (!repo) return null; 
+export default function RepoList({ repos }) {
+    if (!repos || repos.length === 0) return null; 
 
     return (
         <div>
-            <p>{repo.name}</p>
-            <p>{repo.description}</p>
-            <p>{repo.language}</p>
-            <p>{repo.stargazers_count}</p>
+            <h2>Repositories</h2>
+
+            {repos
+            .sort((a, b) => b.stargazers_count - a.stargazers_count)
+            .slice(0, 10).map((repo) => (
+                <div key={repo.id}>
+                    <h3>
+                        <a
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noreferrer">
+                        {repo.name}
+                        </a>
+                    </h3>
+                    <p>{repo.description}</p>
+                    <p>Language: {repo.language}</p>
+                    <p>⭐ Stars: {repo.stargazers_count}</p>
+                </div>
+            ))}
         </div>
-    )
+    );
 }
