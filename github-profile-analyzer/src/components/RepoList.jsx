@@ -18,7 +18,7 @@ export default function RepoList({ repos }) {
                         </a>
                     </h3>
                     <p>{repo.description}</p>
-                    <p>Language: {repo.language ?? "Unknown"}</p>
+                    <p>Language: {repo.language ?? "Not Specified"}</p>
                     <p>⭐ Stars: {repo.stargazers_count}</p>
                 </div>
             ))}
