@@ -5,6 +5,7 @@ import UserProfile from './components/UserProfile';
 import { getRepos, getUser } from './services/githubApi';
 import RepoList from './components/RepoList';
 import LoadingSpinner from './components/LoadingSpinner';
+import StatsChart from './components/StatsChart';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
 
       <UserProfile user={user} />
       <RepoList repos={repos} />
+      <StatsChart repos={repos} />
       
     </div>
   );
